@@ -37,7 +37,7 @@ public class Clock {
         return minute;
     }
 
-    public void setHour(hour) {
+    public void setHour(int hour) {
         this.hour = hour % MAX_HOUR;
     }
 
@@ -45,10 +45,23 @@ public class Clock {
         this.minute = minute % MAX_MINUTE;
     }
 
-    public static void main(String[] args) {
-        System.out.println(Clock.MAX_HOUR);  // 23
+    @Override
+    public boolean equals(Object other) {
+        if (other instanceof Clock otherClock) {
+            if (this.hour == otherClock.hour && this.minute == otherClock.minute) {
+                return true;
+            }
+        }
+        return false;
+    }
 
-        Clock clock1 = new Clock(25, 0);
-        System.out.println(clock1.hour);   // 1
+    @Override
+    public String toString() {
+        return String.format("%d:%d", this.hour, this.minute);
+    }
+
+    public static void main(String[] args) {
+        Clock clock1 = new Clock(12, 30);
+        System.out.println(clock1);
     }
 }
