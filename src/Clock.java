@@ -3,9 +3,7 @@
  */
 public class Clock {
     private static final int NUM_HOURS = 24;
-    private static final int MAX_HOUR = NUM_HOURS - 1;
     private static final int NUM_MINUTES = 60;
-    private static final int MAX_MINUTE = NUM_MINUTES - 1;
 
     private int hour;
     private int minute;
@@ -38,11 +36,11 @@ public class Clock {
     }
 
     public void setHour(int hour) {
-        this.hour = hour % MAX_HOUR;
+        this.hour = hour % NUM_HOURS;
     }
 
     public void setMinute(int minute) {
-        this.minute = minute % MAX_MINUTE;
+        this.minute = minute % NUM_MINUTES;
     }
 
     @Override
@@ -53,11 +51,6 @@ public class Clock {
             }
         }
         return false;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("%d:%d", this.hour, this.minute);
     }
 
     public static void main(String[] args) {
